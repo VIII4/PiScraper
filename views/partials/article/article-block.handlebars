@@ -1,0 +1,54 @@
+<div class="col mb-3" id="article-{{_id}}">
+    <div class="card">
+        <h5 class="card-header h5">Featured</h5>
+        <div class="card-body">
+            <h3 class="card-title">{{headline}}</h3>
+            <p class="card-text">{{summary}}</p>
+            <a href="{{url}}" class="btn btn-primary">Read Article</a>
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">Comments</h5>
+            <div class="list-group">
+                {{#each comments}}
+
+                {{> comment/comment-block }}
+
+                {{/each}}
+            </div>
+            <form>
+                <div class="form-row align-items-center mt-2">
+                    <!-- Grid column -->
+                    <div class="col">
+                        <div class="form-group shadow-textarea p-1 mt-1">
+                            <label for="exampleFormControlTextarea6">Add Comment</label>
+                            <textarea class="form-control z-depth-1" id="comment-{{@index}}-body" rows="3"
+                                placeholder="Write something here..."></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-row align-items-center justify-content-between">
+
+                    <div class="col-8">
+                        <label class="sr-only" for="inlineFormInputGroupMD">Username</label>
+                        <div class="md-form input-group m-0 p-2">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text md-addon">@</span>
+                            </div>
+                            <input type="text" class="form-control pl-0 rounded-0" id="comment-{{@index}}-user"
+                                placeholder="Username">
+                        </div>
+                    </div>
+
+                    <div class="col-3">
+                        <button type="submit" class="btn btn-sm btn-primary btn-comment" data-article-id="{{_id}}"
+                            data-comment-id="#comment-{{@index}}">Submit</button>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+
+
+    </div>
+</div>
