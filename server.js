@@ -43,18 +43,9 @@ var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/piScraper";
 
 mongoose.connect(MONGODB_URI);
 
-// When the server starts, create and save a new Article document to the db
-// The "unique" rule in the User model's schema will prevent duplicate users from being added to the server
-// db.Article.create({ headline: "Test" })
-//   .then(function (dbArticle) {
-//     // console.log(dbArticle);
-//   })
-//   .catch(function (err) {
-//     console.log(err.message);
-//   });
-
 /////////// HTML Routes
 
+//Route to Scrape then load page with info from database
 app.get("/", function (req, res) {
   // First, we grab the body of the html with axios
   axios.get("https://www.roadtovr.com/").then(function (response) {
@@ -98,7 +89,7 @@ app.get("/", function (req, res) {
   });
 });
 
-// TO DO: Route for saving a new comment to the db and associating it with a article
+//Route for saving a new comment to the db and associating it with a article
 app.post("/comment/:id", function (req, res) {
   //Create a comment in the db with user name and comment
   db.Comment.create(req.body)
@@ -122,6 +113,7 @@ app.post("/comment/:id", function (req, res) {
     });
 });
 
+//Route to Delete Comment
 app.delete("/delete/:id", function (req, res) {
   db.Comment.deleteOne({ _id: req.params.id })
     .then(function (dbComment) {
@@ -133,8 +125,6 @@ app.delete("/delete/:id", function (req, res) {
       res.json(err);
     });
 });
-
-//TO DO: DELETE COMMENT FROM DB
 
 // Start the server
 app.listen(PORT, function () {
