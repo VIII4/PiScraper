@@ -10,7 +10,7 @@ Mongoose/MongoDb, Node, and express powered Web scraper
 
 ---
 
-Here is a link to a video of the app in use: ( [https://glacial-oasis-62240.herokuapp.com/]( "Pi Scraper Deployed") )
+Here is a link to deployed app: [PiScraper Deployed!](https://glacial-oasis-62240.herokuapp.com/)
 
 **Alternatively ()
 _(on the linked page, click on "View raw" to get the video.)_**
